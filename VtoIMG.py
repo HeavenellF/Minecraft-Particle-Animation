@@ -13,6 +13,7 @@ for ext in video_ext:
     if video_files:
         # take the first file from the list
         input_video = os.path.join(input_dir, video_files[0])
+        print(f'Input Video : {input_video}')
         break
 
 # exit if there is no input file
