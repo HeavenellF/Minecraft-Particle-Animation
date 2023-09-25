@@ -33,3 +33,6 @@ if not video_files:
 # check if output directory doesnt exist and create one
 output_dir = 'image'
 if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+    print(f'output Directory <{output_dir}> created')
+
