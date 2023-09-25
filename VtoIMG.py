@@ -6,6 +6,7 @@ import sys
 video_ext = ['.mp4','.mkv','.mov','.avi','.wmv','webm']
 input_dir = 'input'
 
+# check if input directory doesnt exist and create one
 if not os.path.exists(input_dir):
     os.makedirs(input_dir)
     print(f'Input Directory <{input_dir}> created')
@@ -28,4 +29,7 @@ if not video_files:
     print(f'Cannot find any Video in Folder <{input_dir}>')
     sys.exit(1)
 
-        
+
+# check if output directory doesnt exist and create one
+output_dir = 'image'
+if not os.path.exists(output_dir):
