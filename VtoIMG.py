@@ -37,14 +37,11 @@ if not os.path.exists(output_dir):
     print(f'output Directory <{output_dir}> created')
 
 
+
 cap = cv2.VideoCapture(input_video)
-
 fps = int(cap.get(5))
-
 frame_interval = int(fps/5)
-
 frame_count = 0
-
 while True :
     ret, frame = cap.read()
     if not ret:
@@ -55,5 +52,4 @@ while True :
         cv2.imwrite(image_filename, frame)
 
     frame_count += 1
-
 cap.release()
