@@ -36,3 +36,24 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
     print(f'output Directory <{output_dir}> created')
 
+
+cap = cv2.VideoCapture(input_video)
+
+fps = int(cap.get(5))
+
+frame_interval = int(fps/5)
+
+frame_count = 0
+
+while True :
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    if frame_count % frame_interval == 0:
+        image_filename = os.path.join(output_dir, f'frame_{frame_count // frame_interval}.jpg')
+        cv2.imwrite(image_filename, frame)
+
+    frame_count += 1
+
+cap.release()
