@@ -9,6 +9,8 @@ input_dir = 'input'
 if not os.path.exists(input_dir):
     os.makedirs(input_dir)
     print(f'Input Directory <{input_dir}> created')
+    print(f'Please add a Video into <{input_dir}> folder')
+    sys.exit(1)
 
 for ext in video_ext:
     # make a list contain all of the file with specific extension
