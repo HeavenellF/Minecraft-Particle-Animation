@@ -7,6 +7,8 @@ video_ext = ['.mp4','.mkv','.mov','.avi','.wmv','webm']
 input_dir = 'input'
 
 if not os.path.exists(input_dir):
+    os.makedirs(input_dir)
+    print(f'Input Directory <{input_dir}> created')
 
 for ext in video_ext:
     # make a list contain all of the file with specific extension
