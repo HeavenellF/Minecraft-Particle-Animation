@@ -13,6 +13,6 @@ if not os.path.exists(input_dir):
     sys.exit(1)
 
 for file in os.listdir(input_dir):
-    file_path = os.path.join(input, file)
+    file_path = os.path.join(input_dir, file)
     if os.path.isfile(file_path):
         print(f'File found : {file_path}')
