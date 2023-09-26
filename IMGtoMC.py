@@ -7,7 +7,7 @@ from natsort import natsorted
 images_dir = 'images'
 i = 0
 
-
+def imgconvertor(file_path):
     
 
 # check if images directory doesnt exist and create one
@@ -23,4 +23,4 @@ for file in sorted_files:
     file_path = os.path.join(images_dir, file)
     if os.path.isfile(file_path):
         print(f'File found : {file_path}')
- 
+        imgconvertor(file_path)
