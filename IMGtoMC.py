@@ -3,16 +3,17 @@ import os
 import sys
 
 
-input_dir = 'images'
+images_dir = 'images'
 
-# check if input directory doesnt exist and create one
-if not os.path.exists(input_dir):
-    os.makedirs(input_dir)
-    print(f'Input Directory <{input_dir}> created')
-    print(f'Please add Images into <{input_dir}> folder')
+# check if images directory doesnt exist and create one
+if not os.path.exists(images_dir):
+    os.makedirs(images_dir)
+    print(f'Images Directory <{images_dir}> created')
+    print(f'Please add Images into <{images_dir}> folder')
     sys.exit(1)
 
-for file in os.listdir(input_dir):
-    file_path = os.path.join(input_dir, file)
+# iterate every file in images directory
+for file in os.listdir(images_dir):
+    file_path = os.path.join(images_dir, file)
     if os.path.isfile(file_path):
         print(f'File found : {file_path}')
