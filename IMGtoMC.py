@@ -8,7 +8,11 @@ images_dir = 'images'
 i = 0
 
 def imgconvertor(file_path):
+    # Resize the image to 64x36 pixels
+    global i
     
+    image = cv2.imread(file_path)
+
 
 # check if images directory doesnt exist and create one
 if not os.path.exists(images_dir):
