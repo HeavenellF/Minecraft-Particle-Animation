@@ -17,3 +17,4 @@ for file in os.listdir(images_dir):
     file_path = os.path.join(images_dir, file)
     if os.path.isfile(file_path):
         print(f'File found : {file_path}')
+        image = cv2.imread(file_path)
