@@ -29,7 +29,6 @@ def imgconvertor(file_path):
             for x in range(width):
                 pixel = resized_image[y, x]
 
-                # Get color (BGR values)
                 blue, green, red = pixel
 
                 blue = round(float(blue) * (1/255),1)
