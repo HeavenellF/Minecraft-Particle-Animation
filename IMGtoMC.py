@@ -36,11 +36,7 @@ def imgconvertor(file_path):
                 green = round(float(green) * (1/255),1)
                 red = round(float(red) * (1/255),1)
 
-                # Calculate brightness
-                brightness = (float(blue) + float(green) + float(red)) / 3
-
                 # Print pixel information
-                # print(f"Pixel at ({x}, {y}) - Color: ({blue}, {green}, {red}), Brightness: {brightness}")
                 print(f'particle minecraft:dust {red} {green} {blue} 1 ~8 ~{((width-y)/6)-7} ~{((x)/6)-5}')
 
     # Reset stdout to its default
