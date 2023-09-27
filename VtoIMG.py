@@ -39,16 +39,15 @@ if not os.path.exists(output_dir):
 
 # split the Video into Images
 cap = cv2.VideoCapture(video_video)
-fps = int(cap.get(5))
-frame_interval = int(fps/5)
+desired_fps = 20  # Desired frame rate (20 fps)
 frame_count = 0
-while True :
+while True:
     ret, frame = cap.read()
     if not ret:
         break
 
-    if frame_count % frame_interval == 0:
-        image_filename = os.path.join(output_dir, f'frame_{frame_count // frame_interval}.jpg')
+    if frame_count % (int(cap.get(cv2.CAP_PROP_FPS)) // desired_fps) == 0:
+        image_filename = os.path.join(output_dir, f'frame_{frame_count // (int(cap.get(cv2.CAP_PROP_FPS)) // desired_fps)}.jpg')
         cv2.imwrite(image_filename, frame)
 
     frame_count += 1
