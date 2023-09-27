@@ -37,7 +37,7 @@ if not os.path.exists(output_dir):
     print(f'output Directory <{output_dir}> created')
 
 
-
+# split the Video into Images
 cap = cv2.VideoCapture(video_video)
 fps = int(cap.get(5))
 frame_interval = int(fps/5)
