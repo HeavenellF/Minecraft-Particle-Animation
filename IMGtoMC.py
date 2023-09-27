@@ -8,14 +8,13 @@ images_dir = 'images'
 i = 0
 
 def imgconvertor(file_path):
-    # Resize the image to 64x36 pixels
     global i
     
     image = cv2.imread(file_path)
     width = 96
     height = 54
-    # width = 64
-    # height = 98
+    
+    # resize the image
     resized_image = cv2.resize(image, (width,height))
 
     # Loop through each pixel in the resized image
