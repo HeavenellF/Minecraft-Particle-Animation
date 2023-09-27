@@ -40,15 +40,18 @@ if not os.path.exists(output_dir):
 # split the Video into Images
 cap = cv2.VideoCapture(video_video)
 desired_fps = 20  # Desired frame rate (20 fps)
-frame_count = 0
+frame_count = 1  # Start from the first frame
+i = 1
 while True:
     ret, frame = cap.read()
     if not ret:
         break
 
-    if frame_count % (int(cap.get(cv2.CAP_PROP_FPS)) // desired_fps) == 0:
-        image_filename = os.path.join(output_dir, f'frame_{frame_count // (int(cap.get(cv2.CAP_PROP_FPS)) // desired_fps)}.jpg')
+    # Check if it's time to capture this frame based on the pattern
+    if frame_count % 3 != 0:
+        image_filename = os.path.join(output_dir, f'frame_{i}.jpg')
         cv2.imwrite(image_filename, frame)
+        i = i + 1
 
     frame_count += 1
 cap.release()
