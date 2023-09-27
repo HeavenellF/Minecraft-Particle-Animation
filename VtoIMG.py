@@ -4,29 +4,29 @@ import sys
 
 
 video_ext = ['.mp4','.mkv','.mov','.avi','.wmv','webm']
-input_dir = 'input'
+video_dir = 'video'
 
-# check if input directory doesnt exist and create one
-if not os.path.exists(input_dir):
-    os.makedirs(input_dir)
-    print(f'Input Directory <{input_dir}> created')
-    print(f'Please add a Video into <{input_dir}> folder')
+# check if video directory doesnt exist and create one
+if not os.path.exists(video_dir):
+    os.makedirs(video_dir)
+    print(f'video Directory <{video_dir}> created')
+    print(f'Please add a Video into <{video_dir}> folder')
     sys.exit(1)
 
 for ext in video_ext:
     # make a list contain all of the file with specific extension
-    video_files = [file for file in os.listdir(input_dir) if file.endswith(ext)]
+    video_files = [file for file in os.listdir(video_dir) if file.endswith(ext)]
 
     # check if the list is not empty
     if video_files:
         # take the first file from the list
-        input_video = os.path.join(input_dir, video_files[0])
-        print(f'Input Video : {video_files[0]}')
+        video_video = os.path.join(video_dir, video_files[0])
+        print(f'video Video : {video_files[0]}')
         break
 
-# exit if there is no input file
+# exit if there is no video file
 if not video_files:
-    print(f'Cannot find any Video in Folder <{input_dir}>')
+    print(f'Cannot find any Video in Folder <{video_dir}>')
     sys.exit(1)
 
 
@@ -38,7 +38,7 @@ if not os.path.exists(output_dir):
 
 
 
-cap = cv2.VideoCapture(input_video)
+cap = cv2.VideoCapture(video_video)
 fps = int(cap.get(5))
 frame_interval = int(fps/5)
 frame_count = 0
