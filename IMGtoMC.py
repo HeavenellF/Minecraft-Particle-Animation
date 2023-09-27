@@ -35,7 +35,7 @@ def imgconvertor(file_path):
                 red = round(float(red) * (1/255),1)
 
                 # Print pixel information
-                print(f'particle minecraft:dust {red} {green} {blue} 1 ~8 ~{((width-y)/6)-7} ~{((x)/6)-5}')
+                print(f'particle dust {red} {green} {blue} 1 ~8 ~{((width-y)/6)-7} ~{((x)/6)-5}')
 
     # Reset stdout to its default
     sys.stdout = sys.__stdout__
