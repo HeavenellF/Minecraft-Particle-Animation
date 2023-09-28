@@ -2,6 +2,24 @@ import cv2
 import os
 import sys
 
+def video_splitter(video_input):
+    # split the Video into Images
+    cap = cv2.VideoCapture(video_input)
+    frame_count = 1  # Start from the first frame
+    i = 1
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        # Check if it's time to capture this frame based on the pattern
+        if frame_count % 3 != 0:
+            image_filename = os.path.join(output_dir, f'frame_{i}.jpg')
+            cv2.imwrite(image_filename, frame)
+            i = i + 1
+
+        frame_count += 1
+    cap.release()
 
 video_ext = ['.mp4','.mkv','.mov','.avi','.wmv','webm']
 video_dir = 'video'
@@ -35,23 +53,6 @@ output_dir = 'images'
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
     print(f'output Directory <{output_dir}> created')
+    
 
-
-# split the Video into Images
-cap = cv2.VideoCapture(video_input)
-desired_fps = 20  # Desired frame rate (20 fps)
-frame_count = 1  # Start from the first frame
-i = 1
-while True:
-    ret, frame = cap.read()
-    if not ret:
-        break
-
-    # Check if it's time to capture this frame based on the pattern
-    if frame_count % 3 != 0:
-        image_filename = os.path.join(output_dir, f'frame_{i}.jpg')
-        cv2.imwrite(image_filename, frame)
-        i = i + 1
-
-    frame_count += 1
-cap.release()
+video_splitter(video_input)
