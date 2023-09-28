@@ -28,9 +28,8 @@ def imgconvertor(file_path):
 
     image = cv2.imread(file_path)
 
-    # image information
-    height, width, channel = image.shape
-
+    # image resolution adjustment
+    height, width, _ = image.shape
     height, width = resolution_adjustment(height, width)
 
     # resize the image
@@ -54,7 +53,8 @@ def imgconvertor(file_path):
                 red = round(float(red) * (1/255),1)
 
                 # Print pixel information
-                print(f'particle dust {red} {green} {blue} 1.2 ~0 ~{round(((width-y)/7),2)} ~{round(((x)/7),2)}')
+                # print(f'particle dust {red} {green} {blue} 1.2 ~0 ~{round(((width-y)/7),2)} ~{round(((x)/7),2)}')
+                print(f'particle dust {red} {green} {blue} 0.8 ~0 ~{round(((width-y)/10),2)} ~{round(((x)/10),2)}')
 
     # Reset stdout to its default
     sys.stdout = sys.__stdout__
