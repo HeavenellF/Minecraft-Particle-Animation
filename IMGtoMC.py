@@ -10,7 +10,6 @@ i = 0
 
 def imgconvertor(file_path):
     global i
-    
 
     image = cv2.imread(file_path)
 
@@ -27,8 +26,6 @@ def imgconvertor(file_path):
             height =  height + height_ratio
         else:
             break
-    print(f'width : {width}')
-    print(f'height : {height}')
     
     # resize the image
     resized_image = cv2.resize(image, (int(width),int(height)))
