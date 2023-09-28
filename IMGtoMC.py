@@ -21,7 +21,6 @@ def resolution_adjustment(height, width):
             height =  height + height_ratio
         else:
             break
-    
     return height, width
 
 def imgconvertor(file_path):
