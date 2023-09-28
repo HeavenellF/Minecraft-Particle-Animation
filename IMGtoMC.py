@@ -6,6 +6,7 @@ from natsort import natsorted
 
 
 images_dir = 'images'
+output_dir = 'wao'
 i = 0
 
 
@@ -38,7 +39,12 @@ def imgconvertor(file_path):
     # Loop through each pixel in the resized image
     height, width, _ = resized_image.shape
 
-    with open(f'heaven{i}.mcfunction', 'w') as file:
+    output_dir = 'wao'
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+        print(f'output Directory <{output_dir}> created')
+
+    with open(f'{output_dir}/heaven{i}.mcfunction', 'w') as file:
         # Redirect stdout to the file
         sys.stdout = file
 
