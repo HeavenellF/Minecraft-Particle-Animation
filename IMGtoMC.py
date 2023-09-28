@@ -8,15 +8,9 @@ from natsort import natsorted
 images_dir = 'images'
 i = 0
 
-def imgconvertor(file_path):
-    global i
 
-    image = cv2.imread(file_path)
-
-    # image information
-    height, width, channel = image.shape
-
-    # reduce the resolution of a video
+# reduce the resolution of a video
+def resolution_adjustment(height, width):
     gcd = math.gcd(width,height)
     width = width_ratio = width/gcd
     height = height_ratio = height/gcd
@@ -27,6 +21,18 @@ def imgconvertor(file_path):
         else:
             break
     
+    return height, width
+
+def imgconvertor(file_path):
+    global i
+
+    image = cv2.imread(file_path)
+
+    # image information
+    height, width, channel = image.shape
+
+    height, width = resolution_adjustment(height, width)
+
     # resize the image
     resized_image = cv2.resize(image, (int(width),int(height)))
 
