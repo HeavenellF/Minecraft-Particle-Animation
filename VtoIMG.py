@@ -20,7 +20,7 @@ for ext in video_ext:
     # check if the list is not empty
     if video_files:
         # take the first file from the list
-        video_video = os.path.join(video_dir, video_files[0])
+        video_input = os.path.join(video_dir, video_files[0])
         print(f'video Video : {video_files[0]}')
         break
 
@@ -38,7 +38,7 @@ if not os.path.exists(output_dir):
 
 
 # split the Video into Images
-cap = cv2.VideoCapture(video_video)
+cap = cv2.VideoCapture(video_input)
 desired_fps = 20  # Desired frame rate (20 fps)
 frame_count = 1  # Start from the first frame
 i = 1
