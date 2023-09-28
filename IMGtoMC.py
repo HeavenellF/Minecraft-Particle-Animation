@@ -1,6 +1,7 @@
 import cv2
 import os
 import sys
+import math
 from natsort import natsorted
 
 
@@ -14,23 +15,33 @@ def imgconvertor(file_path):
     image = cv2.imread(file_path)
 
     # image information
-    width, height, channel = image.shape
+    height, width, channel = image.shape
 
-    desired_width = 96
-    desired_height = 54
+    # reduce the resolution of a video
+    gcd = math.gcd(width,height)
+    width = width_ratio = width/gcd
+    height = height_ratio = height/gcd
+    while True:
+        if width * height < 6000:
+            width = width + width_ratio
+            height =  height + height_ratio
+        else:
+            break
+    print(f'width : {width}')
+    print(f'height : {height}')
     
     # resize the image
-    resized_image = cv2.resize(image, (desired_width,desired_height))
+    resized_image = cv2.resize(image, (int(width),int(height)))
 
     # Loop through each pixel in the resized image
-    desired_height, desired_width, _ = resized_image.shape
+    height, width, _ = resized_image.shape
 
     with open(f'heaven{i}.mcfunction', 'w') as file:
         # Redirect stdout to the file
         sys.stdout = file
 
-        for y in range(desired_height):
-            for x in range(desired_width):
+        for y in range(height):
+            for x in range(width):
                 pixel = resized_image[y, x]
 
                 blue, green, red = pixel
@@ -40,7 +51,7 @@ def imgconvertor(file_path):
                 red = round(float(red) * (1/255),1)
 
                 # Print pixel information
-                print(f'particle dust {red} {green} {blue} 1.2 ~0 ~{round(((desired_width-y)/7),2)} ~{round(((x)/7),2)}')
+                print(f'particle dust {red} {green} {blue} 1.2 ~0 ~{round(((width-y)/7),2)} ~{round(((x)/7),2)}')
 
     # Reset stdout to its default
     sys.stdout = sys.__stdout__
