@@ -10,22 +10,27 @@ i = 0
 def imgconvertor(file_path):
     global i
     
+
     image = cv2.imread(file_path)
-    width = 80
-    height = 45
+
+    # image information
+    width, height, channel = image.shape
+
+    desired_width = 96
+    desired_height = 54
     
     # resize the image
-    resized_image = cv2.resize(image, (width,height))
+    resized_image = cv2.resize(image, (desired_width,desired_height))
 
     # Loop through each pixel in the resized image
-    height, width, _ = resized_image.shape
+    desired_height, desired_width, _ = resized_image.shape
 
     with open(f'heaven{i}.mcfunction', 'w') as file:
         # Redirect stdout to the file
         sys.stdout = file
 
-        for y in range(height):
-            for x in range(width):
+        for y in range(desired_height):
+            for x in range(desired_width):
                 pixel = resized_image[y, x]
 
                 blue, green, red = pixel
@@ -35,7 +40,7 @@ def imgconvertor(file_path):
                 red = round(float(red) * (1/255),1)
 
                 # Print pixel information
-                print(f'particle dust {red} {green} {blue} 1 ~0 ~{round(((width-y)/7),2)} ~{round(((x)/7),2)}')
+                print(f'particle dust {red} {green} {blue} 1.2 ~0 ~{round(((desired_width-y)/7),2)} ~{round(((x)/7),2)}')
 
     # Reset stdout to its default
     sys.stdout = sys.__stdout__
