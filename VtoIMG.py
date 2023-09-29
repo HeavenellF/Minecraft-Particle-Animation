@@ -5,6 +5,12 @@ import sys
 def video_splitter(video_input):
     # split the Video into Images
     cap = cv2.VideoCapture(video_input)
+
+
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    print(f'fps : {fps}')
+    print(f'total frame: {total_frames}')
     frame_count = 1  # Start from the first frame
     i = 1
     while True:
@@ -13,7 +19,7 @@ def video_splitter(video_input):
             break
 
         # Check if it's time to capture this frame based on the pattern
-        if frame_count % 3 != 0:
+        if frame_count % 6 != 0:
             image_filename = os.path.join(output_dir, f'frame_{i}.jpg')
             cv2.imwrite(image_filename, frame)
             i = i + 1
