@@ -16,7 +16,7 @@ def resolution_adjustment(height, width):
     width = width_ratio = width/gcd
     height = height_ratio = height/gcd
     while True:
-        if width * height < 6000:
+        if width * height < 5000:
             width = width + width_ratio
             height =  height + height_ratio
         else:
@@ -56,11 +56,8 @@ def imgconvertor(file_path):
                 blue = round(float(blue) * (1/255),1)
                 green = round(float(green) * (1/255),1)
                 red = round(float(red) * (1/255),1)
-
-                brightness = round((blue + green + red)/3,2)
-
                 # Print pixel information
-                print(f'particle dust {red} {green} {blue} 0.7 ~0 ~{round(((width-y)/10),2)} ~{round(((x)/10),2)}')
+                print(f'particle dust {red} {green} {blue} 0.7 ~0 ~{round(((width-y)/12),2)} ~{round(((x)/12),2)}')
 
     # Reset stdout to its default
     sys.stdout = sys.__stdout__
