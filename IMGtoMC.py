@@ -60,7 +60,7 @@ def imgconvertor(file_path):
                 brightness = round((blue + green + red)/3,2)
 
                 # Print pixel information
-                print(f'particle dust {red} {green} {blue} 1 ~0 ~{round(((width-y)/10),2)} ~{round(((x)/10),2)}')
+                print(f'particle dust {red} {green} {blue} 0.7 ~0 ~{round(((width-y)/10),2)} ~{round(((x)/10),2)}')
 
     # Reset stdout to its default
     sys.stdout = sys.__stdout__
