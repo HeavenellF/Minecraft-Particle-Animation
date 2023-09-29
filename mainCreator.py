@@ -17,3 +17,22 @@ if file_count == 0:
     print(f'there is {file_count} in the folder')
     print('!!force exit!!')
     sys.exit(1)
+
+i = 0
+t = 0
+with open('main.mcfunction', 'w') as file:
+    sys.stdout = file
+    # thic command is to auto loop
+    print(f'scoreboard players add frame step_counter 1 execute if score frame step_counter matches {file_count}.. run scoreboard players set frame step_counter 0')
+    while i <= file_count :
+        # print(f'schedule function heaven:wao/heaven{i} {t}t')
+
+        # print(f'execute as @a[scores={{step_counter={i}}}] run function heaven:wao/heaven{i}')
+        # print(f'scoreboard players add @a[scores={{step_counter={i}}}] step_counter 1')
+
+        print(f'execute if score frame step_counter matches {i}..{i} run function heaven:wao/heaven{i}')
+
+        i = i + 1
+        t = t + 1
+
+    sys.stdout = sys.__stdout__
