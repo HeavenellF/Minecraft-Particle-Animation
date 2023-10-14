@@ -8,7 +8,9 @@ from natsort import natsorted
 images_dir = 'images'
 output_dir = 'wao'
 i = 0
-
+dust_size = 0.3
+total_pixel = 9000
+gap_pixel = 24
 
 # reduce the resolution of a video
 def resolution_adjustment(height, width):
@@ -16,7 +18,7 @@ def resolution_adjustment(height, width):
     width = width_ratio = width/gcd
     height = height_ratio = height/gcd
     while True:
-        if width * height < 5000:
+        if width * height < total_pixel:
             width = width + width_ratio
             height =  height + height_ratio
         else:
@@ -57,7 +59,10 @@ def imgconvertor(file_path):
                 green = round(float(green) * (1/255),1)
                 red = round(float(red) * (1/255),1)
                 # Print pixel information
-                print(f'particle dust {red} {green} {blue} 0.6 ~5 ~{round(((width-y)/12)-3,2)} ~{round(((x)/12),2)}')
+                if blue == 1.0 and green == 0.0 and red == 0.0:
+                    continue
+                else:
+                    print(f'particle dust {red} {green} {blue} {dust_size} ~5 ~{round(((width-y)/gap_pixel)-3,2)} ~{round(((x)/gap_pixel),2)}')
 
     # Reset stdout to its default
     sys.stdout = sys.__stdout__
