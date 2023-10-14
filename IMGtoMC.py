@@ -57,7 +57,7 @@ def imgconvertor(file_path):
                 green = round(float(green) * (1/255),1)
                 red = round(float(red) * (1/255),1)
                 # Print pixel information
-                print(f'particle dust {red} {green} {blue} 0.6 ~5 ~{round(((width-y)/12),2)-3} ~{round(((x)/12),2)}')
+                print(f'particle dust {red} {green} {blue} 0.6 ~5 ~{round(((width-y)/12)-3,2)} ~{round(((x)/12),2)}')
 
     # Reset stdout to its default
     sys.stdout = sys.__stdout__
