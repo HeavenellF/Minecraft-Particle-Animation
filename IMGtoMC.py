@@ -3,13 +3,14 @@ import os
 import sys
 import math
 from natsort import natsorted
+from PIL import Image
 
 
 images_dir = 'images'
 output_dir = 'wao'
 i = 0
 dust_size = 0.3
-total_pixel = 9000
+total_pixel = 5000
 gap_pixel = 24
 
 # reduce the resolution of a video
@@ -58,11 +59,10 @@ def imgconvertor(file_path):
                 blue = round(float(blue) * (1/255),1)
                 green = round(float(green) * (1/255),1)
                 red = round(float(red) * (1/255),1)
-                # Print pixel information
-                if blue == 1.0 and green == 0.0 and red == 0.0:
-                    continue
-                else:
-                    print(f'particle dust {red} {green} {blue} {dust_size} ~5 ~{round(((width-y)/gap_pixel)-3,2)} ~{round(((x)/gap_pixel),2)}')
+                # if background blue and want to be ignored
+                # if blue == 1.0 and green == 0.0 and red == 0.0:
+                #     continue
+                print(f'particle dust {red} {green} {blue} {dust_size} ~5 ~{round(((width-y)/gap_pixel)-3,2)} ~{round(((x)/gap_pixel),2)}')
 
     # Reset stdout to its default
     sys.stdout = sys.__stdout__
