@@ -2,7 +2,7 @@ import os
 import sys
 
 
-functions_dir = 'wao2'
+functions_dir = 'wao'
 # functions directory is the directory where all the function located then
 
 # check if the functions directory doesnt exist and force exit
@@ -23,7 +23,7 @@ t = 0
 with open('main.mcfunction', 'w') as file:
     sys.stdout = file
     # thic command is to auto loop
-    print(f'scoreboard players add frame step_counter 1')
+    # print(f'scoreboard players add frame step_counter 1')
     print(f'execute if score frame step_counter matches {file_count}.. run scoreboard players set frame step_counter 0')
     while i <= file_count :
         # print(f'schedule function heaven:wao/heaven{i} {t}t')
